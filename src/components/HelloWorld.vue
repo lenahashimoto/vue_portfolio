@@ -52,12 +52,10 @@ export default {
 .hero {
   width: 100vw;
   height:  100vh;
-  background: linear-gradient(#8e9eab, #eef2f3);
+  background: linear-gradient(to right, #8e9eab, #eef2f3);
 
 }
 
-h3 {
-  margin: 40px 0 0;
-}
+
 
 </style>

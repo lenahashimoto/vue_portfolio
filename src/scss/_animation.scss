@@ -1,0 +1,16 @@
+@mixin animation(
+  $name,
+  $duration: 2s,
+  $iteration-count: infinite,
+  $timing-function: ease-in-out,
+  $fill-mode: none
+) {
+  animation: {
+    name: $name;
+    duration: $duration;
+    iteration-count: $iteration-count;
+    timing-function: $timing-function;
+    fill-mode: $fill-mode;
+  }
+}
+
