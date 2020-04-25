@@ -1,7 +1,7 @@
-$pc: 780px; // PC
-$pad: 500px; // pad
-$tab: 420px; // タブレット
-$sp: 380px;  // スマホ
+$pc: 1024px; // PC
+$pad: 768px; // pad
+$tab: 640px; // タブレット
+$sp: 320px;  // スマホ
 $ss: 320px;
 
 @mixin pc {
@@ -21,7 +21,7 @@ $ss: 320px;
   }
 }
 @mixin sp {
-  @media (max-width: ($sp)) {
+  @media (min-width: ($sp)) {
     @content;
   }
 }

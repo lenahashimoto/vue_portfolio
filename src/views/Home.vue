@@ -16,27 +16,30 @@
       <span class="chara">T</span>
       <span class="chara">O</span>
     </div>
+    <div class="container">
+      <WorksSwiper/>
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import Navigation from '@/components/Navigation.vue'
-import { titleAnimation } from '../js/animation.js'
+import WorksSwiper from '@/components/WorksSwiper.vue'
 
 export default {
   name: 'Home',
   components: {
-    Navigation
-  },
-  mounted:
-  titleAnimation()
+    Navigation,
+    WorksSwiper
+  }
 }
 </script>
 
 <style lang="scss">
 @import "@/scss/_variables.scss";
 @import "@/scss/_animation.scss";
+@import "@/scss/_swiper.scss";
 
 h3 {
   margin: 40px 0 0;
@@ -74,7 +77,7 @@ a {
     width: 90vh;
   }
 
-  @include pc {
+  @include pad {
     font-size: 70px;
   }
     
@@ -132,43 +135,13 @@ a {
   top: 0;
   left: 0;
   letter-spacing: 3px;
-  // position: fixed;
-  // left: -148px;
-  // top: 345px;
-  // text-align: left;
-  // line-height: 0.8em;
-  
-
-  // @include tab {
-  // font-size: 5em;
-  // left: -181px;
-  // top: 383px;
-  // }
-
-  // @include pad {
-  // font-size: 7em;
-  // left: -435px;
-  // top: 570px;
-  // }
-
-  // @include pc {
-  //   font-size: 6em;
-  //   left: -372px;
-  //   top: 520px;  
-  // }
-  
-  // @include sp {
-  // left: -145px;
-  // top: 356px;
-  // }
-
-  // @include ss {
-  // top: 313px;
-  // }  
-
-
 }
 
-
+.container {
+  position: relative;
+  width: 90vw;
+  height: 80vh;
+  left: 50px;
+}
 
 </style>

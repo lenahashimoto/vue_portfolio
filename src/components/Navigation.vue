@@ -21,7 +21,7 @@
 
 <script>
 export default {
-    name: 'HelloWorld',
+    name: 'Navigation',
     data(){
         return{
         show: false,
@@ -51,12 +51,13 @@ export default {
     background-color: transparent;
     position: fixed;
     top: 0;
+    z-index: 10;
 }
 
 .nav_window {
   width: 100vw;
   height: 100vh;
-  background-color: rgb(0,0,0, 0.4);
+  background-color: rgb(0,0,0, 0.8);
   position: absolute;
   top: 0;
   padding: 100px 0;
