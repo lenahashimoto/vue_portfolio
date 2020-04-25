@@ -9,8 +9,10 @@
                     v-for="(nav_list, i) in nav_lists" 
                     :key="i" 
                     :name="nav_list.name"
-                    :path="nav_list.path">
-                    <router-link :to="nav_list.path">{{ nav_list.name }}</router-link></li>
+                    :to="nav_list.link"
+                    @click="show=!show"
+                    >
+                    <router-link :to="nav_list.link">{{ nav_list.name }}</router-link></li>
                 </ul>
             </div>
         </div>
@@ -22,21 +24,24 @@
 <script>
 export default {
     name: 'Navigation',
-    data(){
+    data() {
         return{
         show: false,
         nav_lists:[
                 {
                     name: 'HOME',
                     path: '/',
+                    link: { name: 'Home' }
                 },
                 {
                     name: 'PROFILE',
-                    path: '/profile' 
+                    path: '/profile',
+                    link: { name: 'Profile' }
                 },
                 {
                     name: 'WORKS',
-                    path: '/works' 
+                    path: '/works',
+                    link: { name: 'Works' }
                 }
             ]
         }
