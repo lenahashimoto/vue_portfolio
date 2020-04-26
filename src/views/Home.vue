@@ -1,36 +1,16 @@
 <template>
-  <div class="hero">
-    <Navigation/>
-    <div class="title-animation inview">                
-      <span class="chara init-letter">L</span>
-      <span class="chara">E</span>
-      <span class="chara">N</span>
-      <span class="chara">A</span>
-      <span class="chara init-letter">H</span>
-      <span class="chara">A</span>
-      <span class="chara">S</span>
-      <span class="chara">H</span>
-      <span class="chara">I</span>
-      <span class="chara">M</span>
-      <span class="chara">O</span>
-      <span class="chara">T</span>
-      <span class="chara">O</span>
-    </div>
-    <div class="container">
-      <WorksSwiper/>
-    </div>
+  <div class="container">
+    <WorksSwiper/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Navigation from '@/components/Navigation.vue'
 import WorksSwiper from '@/components/WorksSwiper.vue'
 
 export default {
   name: 'Home',
   components: {
-    Navigation,
     WorksSwiper
   }
 }
@@ -38,7 +18,6 @@ export default {
 
 <style lang="scss">
 @import "@/scss/_variables.scss";
-@import "@/scss/_animation.scss";
 @import "@/scss/_swiper.scss";
 
 h3 {
@@ -54,74 +33,6 @@ li {
 }
 a {
   color: #42b983;
-}
-
-.hero {
-  width: 100vw;
-  height:  100vh;
-  background: linear-gradient(to right, #8e9eab, #eef2f3);
-
-}
-.title-animation {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 300;
-  color: #3d576d;
-  font-size: 48px;
-  transform: rotate(90deg);
-  transform-origin: left;
-  letter-spacing: -1px;
-  width: 80vh;
-  opacity: 0;
-
-  @include ss {
-    width: 90vh;
-  }
-
-  @include pad {
-    font-size: 70px;
-  }
-    
-    &.inview {
-        opacity: 1;
-
-        & .chara {
-          display: inline-block;
-
-          &.init-letter {
-            font-weight: 400;
-            font-size: 72px;
-
-              @include pad {
-                font-size: 96px;
-              }  
-          }
-
-            @include animation(
-                $name: fadein-up,
-                $duration: 1.8s,
-                $iteration-count: 1,
-                $timing-function: ease-out,
-                $fill-mode: both
-            );
-
-            @for $i from 1 through 13 {
-                &:nth-child(#{$i}) {
-                    animation-delay: $i * 0.08s;
-                }
-            }
-        }         
-    }
-}
-
-@keyframes fadein-up {
-    0% {
-        transform: translateY(-120%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(-25%);
-        opacity: 1;
-    }
 }
 
 .title {
@@ -143,5 +54,4 @@ a {
   height: 80vh;
   left: 50px;
 }
-
 </style>
