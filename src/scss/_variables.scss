@@ -30,3 +30,10 @@ $ss: 320px;
     @content;
   }  
 }
+
+.overlay {
+  &-top, &-right, &-bottom, &-left {
+    z-index: 50 !important;
+    background: #eef2f3 !important;
+  }
+}

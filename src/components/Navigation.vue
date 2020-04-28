@@ -41,7 +41,7 @@ export default {
                 {
                     name: 'WORKS',
                     path: '/works',
-                    link: { name: 'Works' }
+                    link: { name: 'work-01', params: { id: 1 }}
                 }
             ]
         }

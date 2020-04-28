@@ -1,6 +1,7 @@
 <template>
-<div class="profile">
-    <h1>profile</h1>
+  <div class="profile">
+    <div class="h1-profile">
+    </div>
     <ScrollContainer/>
   </div>
 </template>
@@ -12,6 +13,23 @@ export default {
   name: 'Profile',
   components: {
     ScrollContainer
+  },
+  data() {
+    return {
+      title: 'PROFILE'
+    }
+  },
+  mounted: function() {
+    const h1Title = this.$el.querySelector('.h1-profile')
+    h1Title.innerHTML = this._splitText()
+  },
+  methods: {
+      _splitText: function() {
+      const charas = this.title.trim().split("")
+      return charas.reduce((acc, curr) => {
+        return `${acc}<span class="chara">${curr}</span>`
+      }, "")
+    }
   }
 }
 </script>
@@ -20,13 +38,46 @@ export default {
 @import "@/scss/_variables.scss";
 @import "@/scss/_animation.scss";
 
+.h1-profile {
+  @extend .h1-animation;
+
+  & .chara {
+        @for $i from 1 through 7 {
+            &:nth-child(#{$i}) {
+                animation-delay: $i * 0.2s;
+            }
+        }
+    }  
+}
+
 .scrollcontainer {
     height: 80vh;
     width: 80vw;
     overflow: hidden;
     top:5vh;
     left:0;
-    
+    transition: all 1.8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    transition-delay: 2s;
+
+    @include animation(
+        $name: slideup,
+        $duration: 1.8s,
+        $iteration-count: 1,
+        $timing-function: ease-out,
+        $fill-mode: both
+    );
+
+    @keyframes slideup {
+      0% {
+          transform: translateY(20%);
+          opacity: 0;
+      }
+      100% {
+          transform: translateY(0);
+          opacity: 1;
+      }
+  }
+      
 
   .swiper-slide {
     height: auto;
@@ -60,12 +111,12 @@ export default {
   }
 }
 
-
 .profile {
   width: 100vw;
   height:  100vh;
-  background: linear-gradient(to right, #8e9eab, #eef2f3);
   margin: 0;
+  position: fixed;
+  top: 0;
 
   > h1 {
     margin: 0;

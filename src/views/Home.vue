@@ -53,5 +53,6 @@ a {
   width: 90vw;
   height: 80vh;
   left: 50px;
+  z-index: 1;
 }
 </style>

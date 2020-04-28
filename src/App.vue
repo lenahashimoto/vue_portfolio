@@ -17,7 +17,9 @@
         <span class="chara">T</span>
         <span class="chara">O</span>
       </div>
+    <vue-page-transition name="overlay-up-full" :css="false">  
     <router-view/>
+    </vue-page-transition>
     </div>
   </div>
 </template>
@@ -36,6 +38,7 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  position: relative;
 }
 
 #nav {
@@ -117,7 +120,5 @@
         opacity: 1;
     }
 }
-
-
 
 </style>

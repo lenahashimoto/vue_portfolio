@@ -1,7 +1,5 @@
 <template>
-  <div class="works">
     <WorksSwiper/>
-  </div>
 </template>
 
 <script>

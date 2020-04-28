@@ -1,8 +1,6 @@
 <template>
-  <div class="hello">
-    <div class="hero">
+  <div class="work-content">
     <div>Work_02</div>
-    </div>
     <h1>HelloWorld</h1>
   </div>
 </template>
@@ -16,3 +14,6 @@ export default {
 }
 </script>
 
+<style lang="scss">
+@import "@/scss/_variables.scss";
+@import "@/scss/_animation.scss";
