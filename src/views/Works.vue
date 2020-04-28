@@ -69,6 +69,11 @@ export default {
   margin: 0;
   position: fixed;
   top: 0;
+  padding-left: 10px;
+
+  @include pc {
+    padding-left: 0;
+  }
 }
 
 .h1-works {

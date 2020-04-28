@@ -33,7 +33,7 @@
 @import "@/scss/_animation.scss";
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Josefin Sans','Noto Sans JP', Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -67,15 +67,20 @@
   transform: rotate(90deg);
   transform-origin: left;
   letter-spacing: -1px;
-  width: 80vh;
+  width: 73vh;
   opacity: 0;
 
   @include ss {
     width: 90vh;
   }
 
+  @include tab {
+    width: 57vh;
+  }
+
   @include pad {
     font-size: 70px;
+    width: 75vh;
   }
     
     &.inview {
