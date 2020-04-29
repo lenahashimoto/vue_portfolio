@@ -54,7 +54,6 @@
   }
 }
 .hero {
-  width: 100vw;
   height:  100vh;
   background: linear-gradient(to right, #8e9eab, #eef2f3);
 
@@ -67,7 +66,7 @@
   transform: rotate(90deg);
   transform-origin: left;
   letter-spacing: -1px;
-  width: 73vh;
+  width: 532px;
   opacity: 0;
 
   @include ss {
@@ -80,7 +79,7 @@
 
   @include pad {
     font-size: 70px;
-    width: 75vh;
+    width: 719px;
   }
     
     &.inview {

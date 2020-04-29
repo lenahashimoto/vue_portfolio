@@ -1,14 +1,15 @@
 <template>
   <div class="works">
+    <a href="#" v-scroll-to="'#top'" v-show="position > 200" class="scroll-btn">up</a>
     <div class="h1-works">
     </div>
     <div class="container">
-    {{ GetCurrentPath() }}
-    <button v-show="show" @click="PreviousWork">PREVIOUS</button>
-    <button @click="NextWork">NEXT</button>
     <transition name="slide-fade" mode="out-in" :css="false">
     <router-view/>
     </transition>
+      {{ GetCurrentPath() }}
+      <div class="pre-arrow" v-show="show" @click="PreviousWork">＜</div>
+      <div class="nxt-arrow" @click="NextWork">＞</div>
     </div>
   </div>
 </template>
@@ -21,12 +22,16 @@ export default {
     return {
       pagepath: '01',
       show: true,
-      title: 'WORKS'
+      title: 'WORKS',
+      position: 0
     }
   },
   mounted: function() {
     const h1Title = this.$el.querySelector('.h1-works')
     h1Title.innerHTML = this._splitText()
+    window.addEventListener('scroll', () => {
+        this.position = scrollY
+    })
   },
   methods: {
     _splitText: function() {
@@ -36,14 +41,13 @@ export default {
       }, "")
     },
     GetCurrentPath: function() {
-    const currentpath = location.pathname.substr(9,2)
-    this.pagepath = currentpath
-    if(currentpath === '01') {
-      this.show = false
-    } else {
-      this.show = true
-    }
-    console.log(this.pagepath)
+      const currentpath = location.pathname.substr(9,2)
+      this.pagepath = currentpath
+      if(currentpath === '01') {
+        this.show = false
+      } else {
+        this.show = true
+      }
     },
     NextWork: function() {
       const nextpage = '0' + (Number(this.pagepath) + 1);
@@ -59,25 +63,53 @@ export default {
 
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 @import "@/scss/_variables.scss";
 @import "@/scss/_animation.scss";
 
 .works {
-  width: 100vw;
-  height:  100vh;
+  width: 100%;
+  height:  100%;
   margin: 0;
-  position: fixed;
+  position: absolute;
   top: 0;
-  padding-left: 10px;
+}
 
-  @include pc {
-    padding-left: 0;
-  }
+.pre-arrow {
+  cursor: pointer;
+  position: fixed;
+  top: 50%;
+  left: 15px;
+}
+
+.nxt-arrow {
+  cursor: pointer;
+  position: fixed;
+  top: 50%;
+  right: 15px;
+}
+
+a.scroll-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+  color: white;
+  text-decoration: none;
+  background-color: rgb(66, 185, 131, 0.6);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-position: -10px -8px;
+
 }
 
 .h1-works {
- @extend .h1-animation;  
+ @extend .h1-animation;
+
+ & .invew {
+   background-color: white;
+ }
 }
 
 @keyframes fade-in {
@@ -93,7 +125,12 @@ export default {
 
 .container {
   position: absolute;
-  top: 100px;
+  top: 81px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  padding: 0;
 }
 
 .slide-fade-enter-active {

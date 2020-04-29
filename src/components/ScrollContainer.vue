@@ -38,7 +38,6 @@
             <li>SCSS</li>
             <li class="sh">フレームワーク</li>
             <li>Vue.js</li>
-            <li>React.js</li>
             <li>Vuetify</li>
             <li>Bootstrap</li>
             <li class="sh">開発ツール</li>
@@ -98,18 +97,37 @@
 @import "@/scss/_animation.scss";
 
 .scrollcontainer {
-    height: 80%;
-    width: 70%;
+    height: 87%;
+    width: 75%;
     overflow: hidden;
-    top:10vh;
+    top: 80px;
     right:0;
-    left: 0;
+    left: 6vw;
+    padding: 0 20px;
     transition: all 1.8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
     transition-delay: 2s;
+    background: #eef2f3;
+    box-shadow: 0px 0px 8px 3px rgb(143, 159, 172, 0.5);
+
+    @include tab {
+      height: 80%;
+      width: 70%;
+      top: 85px;
+      right:0;
+      left: 0;
+    }
 
     @include pc {
       width: 800px;
       height: 88vh;
+      padding-left: 25px;
+    }
+
+    @include ss {
+      height: 83%;
+      width: 70%;
+      top: 73px;
+
     }
 
     @include animation(
@@ -193,7 +211,10 @@
 
             @include tab {
               margin: 0 0 20px 20px;
-              font-size: 1.2em;
+            }
+
+            @include ss {
+              font-size: 0.8em;
             }
           }
 

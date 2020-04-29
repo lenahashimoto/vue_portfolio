@@ -1,9 +1,19 @@
 <template>
   <div class="work-content">
-    <div>{{ $route.params.id }}</div>
-    this is Work_01
-    <p>{{ number }}</p>
-    <button @click="addnumber">+1</button>
+    <div class="work-header">
+      <img src="@/assets/images/sample.jpg">
+      <span>this is Work_01</span>
+    </div>
+    <div class="work-text">
+      <p>
+        ダンスカンパニーCo. Ruri Mitoのウェブサイト、フライヤー・ポストカードデザイン。
+      </p>
+    </div>
+    <div class="main-content" v-for="(project, i) in projects" :key="i">
+      <h3>{{ project.name }}</h3>
+      <p>{{ project.period }}</p>
+      <img :src="project.image">
+    </div>
   </div>
 </template>
 
@@ -11,22 +21,25 @@
 export default {
   name: 'Work01',
   props: ["id"],
-  data() {
-    return {
-      msg: 'this is Work_01',
-      number: 1
-    }
-  },
-  created: function(){
-    console.log(this.msg)
-  },
-  computed: {
-  },
-  methods: {
-    addnumber: function() {
-      return this.number += 1
-    }
-  }
+  data: () => ({
+      projects: [
+        {
+          name: 'Co. Ruri Mito 東北ツアー',
+          period: '2019年8月',
+          image: '../../images/sample.jpg'
+        },
+        {
+          name: 'Co. Ruri Mito 東北ツアー',
+          period: '2019年8月',
+          image: '../../images/sample.jpg'
+        },
+        {
+          name: 'Co. Ruri Mito 東北ツアー',
+          period: '2019年8月',
+          image: '../../images/sample.jpg'
+        },     
+      ]
+    })
 }
 </script>
 
@@ -54,6 +67,48 @@ export default {
           transform: translateY(0);
           opacity: 1;
       }
+  }
+}
+
+.work-header {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+
+  & > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  & > span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate( -50%, -50%);
+    font-size: 2em;
+    color: #fff;
+    display: inline-block;
+    width: 100%;
+  }
+}
+
+.main-content, .work-text {
+  width: 80vw;
+  margin: 0 auto;
+  padding-bottom: 40px;
+  padding-top: 40px;
+  border-bottom: 1px solid #8c99a578;
+
+  @include tab {
+    padding-bottom: 60px;
+  }
+
+  & > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }
 </style>
