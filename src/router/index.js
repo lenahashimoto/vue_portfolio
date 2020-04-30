@@ -6,6 +6,7 @@ import Sample from '../views/Sample.vue'
 import Works from '../views/Works.vue'
 import Work01 from '../views/Work01.vue'
 import Work02 from '../views/Work02.vue'
+import Work03 from '../views/Work03.vue'
 
 Vue.use(VueRouter)
 
@@ -36,7 +37,8 @@ Vue.use(VueRouter)
     props: true,
     children: [
       { path: '01', component: Work01, name: "work-01" },
-      { path: '02', component: Work02, name: "work-02" }
+      { path: '02', component: Work02, name: "work-02" },
+      { path: '03', component: Work03, name: "work-03" }
     ]
   }
 ]

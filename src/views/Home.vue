@@ -55,4 +55,24 @@ a {
   left: 50px;
   z-index: 1;
 }
+
+.swp-title {
+  font-family: 'Josefin Sans', 'Noto sans JP', sans-serif;
+  font-weight: 400;
+  color: #3d576d;
+  font-size: 1.2em;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.swp-subtitle {
+  @extend .swp-title;
+  font-size: 0.35em;
+  font-weight: 300;
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  text-align: left;
+}
 </style>

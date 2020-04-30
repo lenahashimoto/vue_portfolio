@@ -3,13 +3,13 @@
     <a href="#" v-scroll-to="'#top'" v-show="position > 200" class="scroll-btn">up</a>
     <div class="h1-works">
     </div>
-    <div class="container">
+    <div class="work-container">
     <transition name="slide-fade" mode="out-in" :css="false">
     <router-view/>
     </transition>
       {{ GetCurrentPath() }}
       <div class="pre-arrow" v-show="show" @click="PreviousWork">＜</div>
-      <div class="nxt-arrow" @click="NextWork">＞</div>
+      <div class="nxt-arrow" v-show="show2" @click="NextWork">＞</div>
     </div>
   </div>
 </template>
@@ -22,6 +22,7 @@ export default {
     return {
       pagepath: '01',
       show: true,
+      show2: true,
       title: 'WORKS',
       position: 0
     }
@@ -48,6 +49,11 @@ export default {
       } else {
         this.show = true
       }
+      if(currentpath === '03') {
+        this.show2 = false
+      } else {
+        this.show2 = true
+      }      
     },
     NextWork: function() {
       const nextpage = '0' + (Number(this.pagepath) + 1);
@@ -63,7 +69,7 @@ export default {
 
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import "@/scss/_variables.scss";
 @import "@/scss/_animation.scss";
 
@@ -106,10 +112,8 @@ a.scroll-btn {
 
 .h1-works {
  @extend .h1-animation;
+ transition-delay: 0.5s;
 
- & .invew {
-   background-color: white;
- }
 }
 
 @keyframes fade-in {
@@ -123,7 +127,7 @@ a.scroll-btn {
   }
 }
 
-.container {
+.work-container {
   position: absolute;
   top: 81px;
   left: 0;

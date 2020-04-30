@@ -54,7 +54,6 @@
             <li>Wordpress</li>  
           </ul>
         </div>
-        <a href="keireki.pdf">職務経歴書</a>
       </div>        
     </swiper-slide>
     
@@ -170,6 +169,7 @@
         flex-flow: row wrap;
         justify-content: flex-start;
         align-content: space-between;
+        margin-bottom: 40px;
 
         > .l-col {
           flex-basis: 100%;
