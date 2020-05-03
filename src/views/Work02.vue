@@ -23,7 +23,7 @@ export default {
   data: () => ({
       projects: [
         {
-          name: 'リニューアル',
+          name: 'https://ricepaper-ethnic.net/',
           period: '2020年3月',
           image: '../../images/ricepaper01.jpg',
           image2: '../../images/ricepaper02.jpg'

@@ -56,6 +56,13 @@ a {
   z-index: 1;
 }
 
+.swp-image {
+  width: 350px;
+  height: 450px;
+  object-fit: cover;
+  object-position: 0 0;
+}
+
 .swp-title {
   font-family: 'Josefin Sans', 'Noto sans JP', sans-serif;
   font-weight: 400;
@@ -71,7 +78,7 @@ a {
   font-size: 0.35em;
   font-weight: 300;
   position: absolute;
-  top: 50%;
+  top: 10%;
   left: 20%;
   text-align: left;
 }

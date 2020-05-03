@@ -25,7 +25,6 @@
 </template>
 
 <script>
-
 </script>
 
 <style scoped lang="scss">
@@ -56,6 +55,7 @@
 .hero {
   height:  100vh;
   background: linear-gradient(to right, #8e9eab, #eef2f3);
+  overflow: hidden;
 
 }
 .title-animation {

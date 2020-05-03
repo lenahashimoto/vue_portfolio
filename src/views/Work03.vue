@@ -23,7 +23,7 @@ export default {
   data: () => ({
       projects: [
         {
-          name: 'リニューアル',
+          name: '現在公開準備中です。',
           period: '2020年2月',
           image: '../../images/gagaku01.jpg',
           image2: '../../images/gagaku02.jpg'

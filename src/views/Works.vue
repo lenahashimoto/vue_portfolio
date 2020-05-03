@@ -4,12 +4,13 @@
     <div class="h1-works">
     </div>
     <div class="work-container">
+      <span v-bind:class="{ 'page-transition': isActive }"></span>
     <transition name="slide-fade" mode="out-in" :css="false">
     <router-view/>
     </transition>
       {{ GetCurrentPath() }}
-      <div class="pre-arrow" v-show="show" @click="PreviousWork">＜</div>
-      <div class="nxt-arrow" v-show="show2" @click="NextWork">＞</div>
+      <div class="pre-arrow" v-scroll-to="'#top'" v-show="show" @click="PreviousWork">＜</div>
+      <div class="nxt-arrow" v-scroll-to="'#top'" v-show="show2" @click="NextWork">＞</div>
     </div>
   </div>
 </template>
@@ -24,7 +25,8 @@ export default {
       show: true,
       show2: true,
       title: 'WORKS',
-      position: 0
+      position: 0,
+      isActive: false
     }
   },
   mounted: function() {
@@ -41,27 +43,37 @@ export default {
         return `${acc}<span class="chara">${curr}</span>`
       }, "")
     },
-    GetCurrentPath: function() {
-      const currentpath = location.pathname.substr(9,2)
+    GetCurrentPath: function() { 
+      const currentpath = window.location.pathname.substr(9,2)
       this.pagepath = currentpath
       if(currentpath === '01') {
         this.show = false
       } else {
         this.show = true
       }
-      if(currentpath === '03') {
+      if(currentpath === '06') {
         this.show2 = false
       } else {
         this.show2 = true
       }      
     },
+    // RemoveTransition: function() {
+    //   this.fr.classList.remove('page-transition')
+    // },
     NextWork: function() {
-      const nextpage = '0' + (Number(this.pagepath) + 1);
+      const nextpage = '0' + (Number(this.pagepath) + 1)
+      this.isActive = true
       this.$router.push(nextpage)
+      setTimeout(this.RemoveTransition, 2000)
     },
     PreviousWork: function() {
-      const previouspage = '0' + (Number(this.pagepath) - 1);
-      this.$router.push(previouspage)
+      const previouspage = '0' + (Number(this.pagepath) - 1)
+      this.isActive = true
+      setTimeout(this.$router.push(previouspage), 1000)
+      setTimeout(this.RemoveTransition, 2000)
+    },
+    RemoveTransition: function() {
+      this.isActive = false
     }
   }
 
@@ -134,8 +146,47 @@ a.scroll-btn {
   width: 100%;
   height: 100%;
   background-color: #fff;
+  box-shadow: 0px 0px 8px 3px rgb(143, 159, 172, 0.5);
   padding: 0;
+
+  & span{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background-color: #e6ebed;
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    transform: translateY(-110vh);
+
+
+    &.page-transition {
+      transition: all .8s;
+
+      @include animation(
+                  $name: trans-animation,
+                  $duration: .8s,
+                  $iteration-count: 1,
+                  $timing-function: ease-out,
+                  $fill-mode: both
+              );
+    }
+  }
+      @keyframes trans-animation {
+      0% {
+          transform: translateY(-50vh) scaleY(1);
+      }
+      50% {
+          transform: translateY(0) scaleY(2);
+      }
+      100% {
+          transform: translateY(100vh) scaleY(0);
+      }
+    }
 }
+
+
 
 .slide-fade-enter-active {
   transition: all .3s ease;

@@ -17,7 +17,7 @@
             </div>
         </div>
         </transition>
-        <div class="nav_btn" @click="show=!show" v-bind:class="{nav_btn2:show}"></div>
+        <div class="nav_btn" ontouchstart="" @click="show=!show" v-bind:class="{nav_btn2:show}"></div>
     </div>
 </template>
 
