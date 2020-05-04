@@ -12,7 +12,7 @@
                     :to="nav_list.link"
                     @click="show=!show"
                     >
-                    <router-link :to="nav_list.link">{{ nav_list.name }}</router-link></li>
+                    <router-link v-scroll-to="'#top'" :to="nav_list.link">{{ nav_list.name }}</router-link></li>
                 </ul>
             </div>
         </div>
@@ -80,7 +80,7 @@ export default {
     left: 20px;
     width: 30px;
     height: 30px;
-    background-color: #3d576d;
+    background-color: $cMain;
     border-radius: 40px;
     cursor: pointer;
 
@@ -90,7 +90,7 @@ export default {
     }
 
     &:hover {
-        background-color: #c7d8e5;
+        background-color: $cNavbtn;
     }
 
     &::before {
@@ -107,14 +107,14 @@ export default {
         opacity: 1;
         position: absolute;
         top: 2px;
-        left: 45px;
+        left: 40px;
     }
 }
 
 .nav_btn2 {
     @extend .nav_btn;
-    background-color: #c7d8e5;
-    color: #c7d8e5;
+    background-color: $cNavbtn;
+    color: $cNavbtn;
 
     &::before {
         content:'close';
@@ -146,7 +146,7 @@ li {
 }
 
 a {
-  color: #42b983;
+  color: $cLink;
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 500;
   font-size: 2em;

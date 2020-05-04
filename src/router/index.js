@@ -2,7 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Profile from '../views/Profile.vue'
-import Sample from '../views/Sample.vue'
 import Works from '../views/Works.vue'
 import Work01 from '../views/Work01.vue'
 import Work02 from '../views/Work02.vue'
@@ -23,11 +22,6 @@ Vue.use(VueRouter)
     path: '/profile',
     name: 'Profile',
     component: Profile
-  },
-  {
-    path: '/sample',
-    name: 'Sample',
-    component: Sample
   },
   {
     path: '/works', 

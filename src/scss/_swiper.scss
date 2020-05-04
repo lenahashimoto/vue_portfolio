@@ -8,11 +8,19 @@
         top: 10vw;
         right: 2vh;
     }
+    @include tab {
+        height: 60vh;
+        width: 80vw;
+        position: absolute;
+        top: 10vw;
+        right: -3vh;
+    }
     @include pad {
         height: 500px;
-        width: 90vw;
+        width: 100vw;
         position: relative;
-        left: 50px;
+        left: -50px;
+        top: 85px;
     }
   }
 

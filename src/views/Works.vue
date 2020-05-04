@@ -1,16 +1,14 @@
 <template>
   <div class="works">
-    <a href="#" v-scroll-to="'#top'" v-show="position > 200" class="scroll-btn">up</a>
+    <a href="#" v-scroll-to="'#top'" v-show="position > 200" class="scroll-btn"><span>up</span></a>
     <div class="h1-works">
     </div>
     <div class="work-container">
       <span v-bind:class="{ 'page-transition': isActive }"></span>
-    <transition name="slide-fade" mode="out-in" :css="false">
     <router-view/>
-    </transition>
       {{ GetCurrentPath() }}
-      <div class="pre-arrow" v-scroll-to="'#top'" v-show="show" @click="PreviousWork">＜</div>
-      <div class="nxt-arrow" v-scroll-to="'#top'" v-show="show2" @click="NextWork">＞</div>
+      <div class="pre-arrow" v-scroll-to="'#top'" v-show="show" @click="PreviousWork"></div>
+      <div class="nxt-arrow" v-scroll-to="'#top'" v-show="show2" @click="NextWork"></div>
     </div>
   </div>
 </template>
@@ -29,7 +27,7 @@ export default {
       isActive: false
     }
   },
-  mounted: function() {
+  mounted() {
     const h1Title = this.$el.querySelector('.h1-works')
     h1Title.innerHTML = this._splitText()
     window.addEventListener('scroll', () => {
@@ -57,9 +55,6 @@ export default {
         this.show2 = true
       }      
     },
-    // RemoveTransition: function() {
-    //   this.fr.classList.remove('page-transition')
-    // },
     NextWork: function() {
       const nextpage = '0' + (Number(this.pagepath) + 1)
       this.isActive = true
@@ -98,6 +93,49 @@ export default {
   position: fixed;
   top: 50%;
   left: 15px;
+  width: 20px;
+  height: 40px;
+  transform: translateX(10%);
+  transition: all 0.5s cubic-bezier(0.04, 0.85, 0.64, 1.22);
+
+  &:hover {
+    @include animation(
+        $name: go-left,
+        $duration: 0.8s,
+        $timing-function: ease-out,
+        $fill-mode: both
+    );
+  }
+
+  @keyframes go-left {
+      0%, 100% {
+          transform: translateX(20%);
+          opacity: 0.5;
+      }
+      50% {
+          transform: translateX(0);
+          opacity: 1;
+      } 
+  }
+  
+  &::before {
+    content: "";
+    border-top: 1px solid $cMain;
+    transform: rotate(125deg);
+    position: relative;
+    top: -10px;
+    display: block;
+  }
+
+  &::after {
+    content: '';
+    border-bottom: 1px solid $cMain;
+    transform: rotate(-125deg);
+    position: relative;
+    top: 6px;
+    display: block;
+  }
+
 }
 
 .nxt-arrow {
@@ -105,6 +143,48 @@ export default {
   position: fixed;
   top: 50%;
   right: 15px;
+  width: 20px;
+  height: 40px;
+  transform: translateX(-10%);
+  transition: all 0.5s cubic-bezier(0.04, 0.85, 0.64, 1.22);
+
+  &:hover {
+    @include animation(
+        $name: go-right,
+        $duration: 0.8s,
+        $timing-function: ease-out,
+        $fill-mode: both
+    );
+  }
+
+  @keyframes go-right {
+      0%, 100% {
+          transform: translateX(-20%);
+          opacity: 0.5;
+      }
+      50% {
+          transform: translateX(0);
+          opacity: 1;
+      } 
+  }
+  
+  &::before {
+    content: "";
+    border-top: 1px solid $cMain;
+    transform: rotate(-125deg);
+    position: relative;
+    top: -10px;
+    display: block;
+  }
+
+  &::after {
+    content: '';
+    border-bottom: 1px solid $cMain;
+    transform: rotate(125deg);
+    position: relative;
+    top: 6px;
+    display: block;
+  }
 }
 
 a.scroll-btn {
@@ -112,13 +192,26 @@ a.scroll-btn {
   bottom: 20px;
   right: 20px;
   z-index: 100;
-  color: white;
+  color: $cWhite;
   text-decoration: none;
   background-color: rgb(66, 185, 131, 0.6);
   width: 50px;
   height: 50px;
   border-radius: 50%;
   background-position: -10px -8px;
+  transition: all 0.5s cubic-bezier(0.04, 0.85, 0.64, 1.22);
+
+  &:hover {
+    transform: translateY(-18px);
+    background-color: rgb(66, 185, 131, 1);
+  }
+
+  & span {
+    display: inline-block;
+    position: absolute;
+    top: 15px;
+    left: 16px;
+  }
 
 }
 
@@ -145,15 +238,15 @@ a.scroll-btn {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #fff;
-  box-shadow: 0px 0px 8px 3px rgb(143, 159, 172, 0.5);
+  background-color: $cWhite;
   padding: 0;
+  
 
   & span{
     display: inline-block;
     width: 100%;
     height: 100%;
-    background-color: #e6ebed;
+    background-color: $cTransition;
     position: absolute;
     z-index: 100;
     top: 0;
@@ -165,12 +258,12 @@ a.scroll-btn {
       transition: all .8s;
 
       @include animation(
-                  $name: trans-animation,
-                  $duration: .8s,
-                  $iteration-count: 1,
-                  $timing-function: ease-out,
-                  $fill-mode: both
-              );
+          $name: trans-animation,
+          $duration: .8s,
+          $iteration-count: 1,
+          $timing-function: ease-out,
+          $fill-mode: both
+      );
     }
   }
       @keyframes trans-animation {
@@ -184,19 +277,5 @@ a.scroll-btn {
           transform: translateY(100vh) scaleY(0);
       }
     }
-}
-
-
-
-.slide-fade-enter-active {
-  transition: all .3s ease;
-}
-.slide-fade-leave-active {
-  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-}
-.slide-fade-enter, .slide-fade-leave-to
-/* .slide-fade-leave-active below version 2.1.8 */ {
-  transform: translateX(20px);
-  opacity: 0;
 }
 </style>

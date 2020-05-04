@@ -1,30 +1,57 @@
 <template>
   <div id="app">
-    <div class="hero">
-      <Navigation></Navigation>
-      <div class="title-animation inview">                
-        <span class="chara init-letter">L</span>
-        <span class="chara">E</span>
-        <span class="chara">N</span>
-        <span class="chara">A</span>
-        <span class="chara init-letter">H</span>
-        <span class="chara">A</span>
-        <span class="chara">S</span>
-        <span class="chara">H</span>
-        <span class="chara">I</span>
-        <span class="chara">M</span>
-        <span class="chara">O</span>
-        <span class="chara">T</span>
-        <span class="chara">O</span>
+    <transition name="fadeout" appear>
+      <Loader v-show="loading"/>
+    </transition>
+    <div>
+      <div class="hero">
+        <Navigation v-show="inview"></Navigation>
+        <div class="title-animation inview" v-show="inview">                
+          <span class="chara init-letter">L</span>
+          <span class="chara">E</span>
+          <span class="chara">N</span>
+          <span class="chara">A</span>
+          <span class="chara init-letter">H</span>
+          <span class="chara">A</span>
+          <span class="chara">S</span>
+          <span class="chara">H</span>
+          <span class="chara">I</span>
+          <span class="chara">M</span>
+          <span class="chara">O</span>
+          <span class="chara">T</span>
+          <span class="chara">O</span>
+        </div>
+      <vue-page-transition name="overlay-up-full" :css="false">  
+      <router-view/>
+      </vue-page-transition>
       </div>
-    <vue-page-transition name="overlay-up-full" :css="false">  
-    <router-view/>
-    </vue-page-transition>
     </div>
   </div>
 </template>
 
 <script>
+import Loader from '@/components/Loader.vue'
+
+export default {
+  name: 'App',
+  components: {
+    Loader
+  },
+ data() {
+    return {
+    loading: true,
+    inview: false
+    }
+  },
+  mounted() {
+  setTimeout(() => {
+      this.loading = false;
+    }, 1000)
+  setTimeout(() => {
+      this.inview = true;
+    }, 1800)
+  }
+}
 </script>
 
 <style scoped lang="scss">
@@ -36,7 +63,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: $cText;
   position: relative;
 }
 
@@ -45,23 +72,23 @@
 
   a {
     font-weight: bold;
-    color: #2c3e50;
+    color: $cText;
 
     &.router-link-exact-active {
-      color: #42b983;
+      color: $cLink;
     }
   }
 }
 .hero {
   height:  100vh;
-  background: linear-gradient(to right, #8e9eab, #eef2f3);
+  background: linear-gradient(to right, $cBg1, $cBg2);
   overflow: hidden;
 
 }
 .title-animation {
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 300;
-  color: #3d576d;
+  color: $cMain;
   font-size: 48px;
   transform: rotate(90deg);
   transform-origin: left;
@@ -123,6 +150,15 @@
         transform: translateY(-25%);
         opacity: 1;
     }
+}
+
+.fadeout-enter-active, .fadeout-leave-active {
+  transition: all 0.8s ease;
+  opacity: 1;
+}
+
+.fadeout-enter, .fadeout-leave-to {
+  opacity: 0;
 }
 
 </style>

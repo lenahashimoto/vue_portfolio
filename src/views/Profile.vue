@@ -116,12 +116,13 @@ export default {
 <style scoped lang="scss">
 @import "@/scss/_variables.scss";
 @import "@/scss/_animation.scss";
+
 .profile-container {
   position: absolute;
   top: 81px;
   left: 0;
   width: 100%;
-  background: #eef2f3;
+  background: $cBg2;
   box-shadow: 0px 0px 8px 3px rgb(143, 159, 172, 0.5);
 
 }
@@ -149,7 +150,7 @@ export default {
 
     @keyframes slideup {
         0% {
-            transform: translateY(20%);
+            transform: translateY(15%);
             opacity: 0;
         }
         100% {
@@ -195,7 +196,7 @@ export default {
             transform: rotate(35deg);
             transform-origin: left;
             padding-top: 10px;
-            border-top: 1px solid #2c3e50;
+            border-top: 1px solid $cText;
             font-size: 1.6em;
             width: 28%;
 

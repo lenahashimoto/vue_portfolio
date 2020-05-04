@@ -1,4 +1,3 @@
-
 <template>
   <swiper class="swiper scrollcontainer" :options="swiperOption">
     <swiper-slide class="text">

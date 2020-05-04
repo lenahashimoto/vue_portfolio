@@ -51,20 +51,21 @@ export default {
 @import "@/scss/_animation.scss";
 
 .work-content {
-  transition: all 1.8s;
-  transition-delay: 0.08s ;
+  transition: all 0.8s;
+  transition-delay: 0.8s ;
+  box-shadow: 0px 0px 8px 3px rgb(143, 159, 172, 0.5);
 
     @include animation(
-        $name: slideup,
-        $duration: 1.8s,
+        $name: w-slideup,
+        $duration: 0.8s,
         $iteration-count: 1,
         $timing-function: ease-out,
         $fill-mode: both
     );
 
-    @keyframes slideup {
+    @keyframes w-slideup {
       0% {
-          transform: translateY(12%);
+          transform: translateY(5%);
           opacity: 0;
       }
       100% {
@@ -106,6 +107,10 @@ export default {
   padding-top: 40px;
   border-bottom: 1px solid #8c99a578;
   text-align: left;
+
+  &:last-child {
+    border-bottom: none;
+  }
 
   @include tab {
     padding-bottom: 60px;

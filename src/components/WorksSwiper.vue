@@ -35,17 +35,17 @@
             clickable: true
           },
           breakpoints: {
-            1024: {
-              slidesPerView: 3,
-              spaceBetween: 40
+            320: {
+              slidesPerView: 1,
+              spaceBetween: 10
             },
             640: {
               slidesPerView: 2,
               spaceBetween: 20
             },
-            320: {
-              slidesPerView: 1,
-              spaceBetween: 10
+            1024: {
+              slidesPerView: 4,
+              spaceBetween: 40
             }
           }
         },
@@ -78,7 +78,7 @@
             title: 'WORK 05',
             subtitle: 'Ballet Studio Blancフライヤー・ポストカードデザイン。',
             name: 'work-05',
-            image: '../../images/balletstudio.jpg'
+            image: '../../images/balletstudio00.jpg'
         },
         {
             title: 'WORK 06',
