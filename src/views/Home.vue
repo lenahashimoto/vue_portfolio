@@ -102,7 +102,7 @@ a {
   right: 22%;
 
   @include pad {
-    bottom: 20%;
+    top: 600px;
     right: 10%;
   }
 

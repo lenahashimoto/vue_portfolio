@@ -33,6 +33,14 @@ export default {
     window.addEventListener('scroll', () => {
         this.position = scrollY
     })
+    const btnPrv = this.$el.querySelector('.pre-arrow')
+    const btnNxt = this.$el.querySelector('.nxt-arrow')
+    btnPrv.addEventListener('touchstart', () => {
+      btnPrv.classList.add('hover')
+    }, false)
+    btnNxt.addEventListener('touchstart', () => {
+      btnNxt.classList.add('hover')
+    }, false)
   },
   methods: {
     _splitText: function() {
@@ -92,13 +100,13 @@ export default {
   cursor: pointer;
   position: fixed;
   top: 50%;
-  left: 15px;
+  left: 10px;
   width: 20px;
   height: 40px;
   transform: translateX(10%);
   transition: all 0.5s cubic-bezier(0.04, 0.85, 0.64, 1.22);
 
-  &:hover {
+  &:hover, & .hover {
     @include animation(
         $name: go-left,
         $duration: 0.8s,
@@ -132,7 +140,7 @@ export default {
     border-bottom: 1px solid $cMain;
     transform: rotate(-125deg);
     position: relative;
-    top: 6px;
+    top: 5px;
     display: block;
   }
 
@@ -142,13 +150,13 @@ export default {
   cursor: pointer;
   position: fixed;
   top: 50%;
-  right: 15px;
+  right: 10px;
   width: 20px;
   height: 40px;
   transform: translateX(-10%);
   transition: all 0.5s cubic-bezier(0.04, 0.85, 0.64, 1.22);
 
-  &:hover {
+  &:hover, & .hover {
     @include animation(
         $name: go-right,
         $duration: 0.8s,
@@ -182,7 +190,7 @@ export default {
     border-bottom: 1px solid $cMain;
     transform: rotate(125deg);
     position: relative;
-    top: 6px;
+    top: 5px;
     display: block;
   }
 }

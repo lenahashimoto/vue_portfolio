@@ -51,6 +51,7 @@ export default {
 @import "@/scss/_animation.scss";
 
 .work-content {
+  min-height: 100vh;
   transition: all 0.8s;
   transition-delay: 0.8s ;
   box-shadow: 0px 0px 8px 3px rgb(143, 159, 172, 0.5);
