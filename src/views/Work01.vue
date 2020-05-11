@@ -5,6 +5,9 @@
       <p>
         ダンスカンパニーCo. Ruri Mitoのウェブサイト、フライヤー・ポストカード等のデザイン。
       </p>
+      <p>
+       <a href="http://rurimito.com/" target="_blank">http://rurimito.com/</a>
+      </p>
     </div>
     <div class="main-content" v-for="(project, i) in projects" :key="i">
       <h3>{{ project.name }}</h3>

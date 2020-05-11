@@ -8,7 +8,7 @@
       </p>
     </div>
     <div class="main-content" v-for="(project, i) in projects" :key="i">
-      <h3>{{ project.name }}</h3>
+      <a href="https://ricepaper-ethnic.net/" target="_blank"><h3>{{ project.name }}</h3></a>
       <p>{{ project.period }}</p>
       <img :src="project.image">
       <img :src="project.image2">

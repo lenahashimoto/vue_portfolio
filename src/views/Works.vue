@@ -35,10 +35,10 @@ export default {
     })
     const btnPrv = this.$el.querySelector('.pre-arrow')
     const btnNxt = this.$el.querySelector('.nxt-arrow')
-    btnPrv.addEventListener('touchstart', () => {
+    btnPrv.addEventListener('DOMFocusIn', () => {
       btnPrv.classList.add('hover')
     }, false)
-    btnNxt.addEventListener('touchstart', () => {
+    btnNxt.addEventListener('DOMFocusIn', () => {
       btnNxt.classList.add('hover')
     }, false)
   },
