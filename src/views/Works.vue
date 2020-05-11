@@ -7,8 +7,8 @@
       <span v-bind:class="{ 'page-transition': isActive }"></span>
     <router-view/>
       {{ GetCurrentPath() }}
-      <div class="pre-arrow" v-scroll-to="'#top'" v-show="show" @click="PreviousWork"></div>
-      <div class="nxt-arrow" v-scroll-to="'#top'" v-show="show2" @click="NextWork"></div>
+      <div class="pre-arrow" v-scroll-to="'#top'" v-show="show" @click="PreviousWork" :class="{ hover: onHover }" @mouseover="onHover = true" @mouseleave="onHover = false"></div>
+      <div class="nxt-arrow" v-scroll-to="'#top'" v-show="show2" @click="NextWork" :class="{ hover: onHover2 }" @mouseover="onHover2 = true" @mouseleave="onHover2 = false"></div>
     </div>
   </div>
 </template>
@@ -24,7 +24,9 @@ export default {
       show2: true,
       title: 'WORKS',
       position: 0,
-      isActive: false
+      isActive: false,
+      onHover: false,
+      onHover2: false,
     }
   },
   mounted() {
@@ -33,14 +35,6 @@ export default {
     window.addEventListener('scroll', () => {
         this.position = scrollY
     })
-    const btnPrv = this.$el.querySelector('.pre-arrow')
-    const btnNxt = this.$el.querySelector('.nxt-arrow')
-    btnPrv.addEventListener('DOMFocusIn', () => {
-      btnPrv.classList.add('hover')
-    }, false)
-    btnNxt.addEventListener('DOMFocusIn', () => {
-      btnNxt.classList.add('hover')
-    }, false)
   },
   methods: {
     _splitText: function() {
@@ -68,12 +62,14 @@ export default {
       this.isActive = true
       this.$router.push(nextpage)
       setTimeout(this.RemoveTransition, 2000)
+      setTimeout(this.onHover2 = false, 1000)
     },
     PreviousWork: function() {
       const previouspage = '0' + (Number(this.pagepath) - 1)
       this.isActive = true
-      setTimeout(this.$router.push(previouspage), 1000)
+      this.$router.push(previouspage)
       setTimeout(this.RemoveTransition, 2000)
+      setTimeout(this.onHover = false, 1000)
     },
     RemoveTransition: function() {
       this.isActive = false
@@ -106,7 +102,7 @@ export default {
   transform: translateX(10%);
   transition: all 0.5s cubic-bezier(0.04, 0.85, 0.64, 1.22);
 
-  &:hover, & .hover {
+  &.hover {
     @include animation(
         $name: go-left,
         $duration: 0.8s,
@@ -156,7 +152,7 @@ export default {
   transform: translateX(-10%);
   transition: all 0.5s cubic-bezier(0.04, 0.85, 0.64, 1.22);
 
-  &:hover, & .hover {
+  &.hover {
     @include animation(
         $name: go-right,
         $duration: 0.8s,
@@ -257,7 +253,7 @@ a.scroll-btn {
     background-color: $cTransition;
     position: absolute;
     z-index: 100;
-    top: 0;
+    top: -20px;
     left: 0;
     transform: translateY(-110vh);
 

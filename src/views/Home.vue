@@ -98,7 +98,7 @@ a {
 
 .scroll-arrow-left {
   position: absolute;
-  bottom: 20%;
+  bottom: 15%;
   right: 22%;
 
   @include pad {
