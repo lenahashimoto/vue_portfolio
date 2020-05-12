@@ -122,7 +122,7 @@ export default {
   top: 81px;
   left: 0;
   width: 100%;
-  background: $cBg2;
+  background: $cWhite;
   box-shadow: 0px 0px 8px 3px rgb(143, 159, 172, 0.5);
 
 }

@@ -8,10 +8,15 @@
         top: 10vw;
         right: 2vh;
     }
+    @include spWide {
+        height: 75vh;
+        width: 75vw;
+        top: -10px;
+        right: 2vw;
+    }
     @include tab {
         height: 60vh;
         width: 80vw;
-        position: absolute;
         top: 10vw;
         right: -3vh;
     }

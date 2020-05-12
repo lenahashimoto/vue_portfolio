@@ -1,8 +1,9 @@
 $cMain: #3d576d;
 $cText: #2c3e50;
 $cLink: #42b983;
-$cBg1: #8e9eab;
-$cBg2: #eef2f3;
+$cBg1: #fceea4;
+$cBg2: #b8f8d5;
+$cBg3: #9de9fc;
 $cWhite: #ffffff;
 $cTransition: #e6ebed;
 $cNavbtn: #c7d8e5;
@@ -10,6 +11,7 @@ $cNavbtn: #c7d8e5;
 $pc: 1024px; // PC
 $pad: 768px; // ipad
 $tab: 640px; // タブレット
+$spWide: 360px; // タブレット
 $sp: 320px;  // スマホ
 $ss: 320px;
 
@@ -26,6 +28,11 @@ $ss: 320px;
 }
 @mixin tab {
   @media (min-width: ($tab)) {
+    @content;
+  }
+}
+@mixin spWide {
+  @media (min-width: ($spWide)) {
     @content;
   }
 }

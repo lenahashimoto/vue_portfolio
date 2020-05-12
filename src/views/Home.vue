@@ -100,6 +100,7 @@ a {
   position: absolute;
   bottom: 15%;
   right: 22%;
+  z-index: 50;
 
   @include pad {
     top: 600px;

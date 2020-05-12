@@ -81,10 +81,25 @@ export default {
 }
 .hero {
   height:  100vh;
-  background: linear-gradient(to right, $cBg1, $cBg2);
-  overflow: hidden;
+  background: linear-gradient(to right, $cBg1, $cBg2, $cBg3);
+  background-size: 400% 400%;
+  animation: bgAnimation 20s ease infinite;
 
+  overflow: hidden;
 }
+
+@keyframes bgAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .title-animation {
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 300;
