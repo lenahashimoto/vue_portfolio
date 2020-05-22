@@ -8,5 +8,6 @@ module.exports = {
           prependData: `@import "@/scss/_variables.scss";`
         }
       }
-    }
+    },
+    productionSourceMap: process.env.NODE_ENV === 'production'? false :true,
   };

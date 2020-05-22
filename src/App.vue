@@ -49,7 +49,7 @@ export default {
     }, 1000)
   setTimeout(() => {
       this.inview = true;
-    }, 1800)
+    }, 1500)
   }
 }
 </script>
