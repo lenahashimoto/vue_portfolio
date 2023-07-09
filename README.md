@@ -1,5 +1,7 @@
 # portfolio
-
+```
+Portfolio webpage made with vue.js
+```
 ## Project setup
 ```
 yarn install
